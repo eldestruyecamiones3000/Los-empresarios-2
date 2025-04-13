@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Los Empresarios</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -27,12 +28,21 @@
             margin: 0 15px;
             font-size: 18px;
         }
-        #admin-controls {
-            display: none;
+        nav a:hover {
+            text-decoration: underline;
+        }
+        #visit-counter, #admin-controls {
             margin: 20px;
             padding: 10px;
             background-color: #ffffff;
-            border: 1px solid #ddd;
+            color: #003366;
+            text-align: center;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        #login-form {
+            margin-top: 20px;
+            text-align: center;
         }
         section {
             margin: 20px;
@@ -53,8 +63,15 @@
     <header>
         <h1 id="titulo-header">Los Empresarios</h1>
         <p id="subtitulo-header">Liderazgo, innovación y excelencia empresarial</p>
-        <button onclick="enableAdmin()" style="margin-top: 10px; padding: 5px;">Ingresar como Administrador</button>
+        <div id="login-form">
+            <button onclick="promptPassword()" style="margin-top: 10px; padding: 10px; font-size: 16px;">Ingresar como Administrador</button>
+        </div>
     </header>
+
+    <div id="visit-counter">
+        <h2>Bienvenidos</h2>
+        <p>¡Has visitado esta página <span id="counter"></span> veces!</p>
+    </div>
 
     <nav>
         <a href="#inicio">Inicio</a>
@@ -63,14 +80,71 @@
         <a href="#empresas">Empresas</a>
         <a href="#impacto">Impacto Global</a>
         <a href="#colaboradores">Colaboradores</a>
+        <a href="#faq">Preguntas Frecuentes</a>
+        <a href="#contacto">Contacto</a>
     </nav>
 
     <section id="inicio">
         <h2>Inicio</h2>
-        <p id="texto-inicio">Bienvenidos al sitio web oficial de *Los Empresarios*, un grupo comprometido con el liderazgo y el desarrollo empresarial.</p>
+        <p id="texto-inicio">Bienvenidos al sitio web oficial de *Los Empresarios*. Este grupo está compuesto por seis líderes visionarios, unidos por su pasión por la excelencia y su compromiso con transformar el panorama empresarial global. En esta página encontrarás toda la información sobre nuestra misión, visión y las diversas iniciativas que lideramos. Nos enfocamos en promover la colaboración, la innovación y el impacto positivo en todas las industrias que representamos.</p>
     </section>
 
-    <div id="admin-controls">
+    <section id="historia">
+        <h2>Nuestra Historia</h2>
+        <p>*Los Empresarios* fue fundado el <b>11 de abril de 2025</b>, un día que marcó el inicio de una alianza estratégica entre seis líderes comprometidos con transformar el mundo empresarial...</p>
+        <p>Desde sus humildes comienzos, el grupo ha evolucionado significativamente...</p>
+    </section>
+
+    <section id="integrantes">
+        <h2>Integrantes</h2>
+        <div><h3>Fernando Romero</h3><p>Como Directivo de *Los Empresarios*, Fernando lidera estratégicamente las operaciones del grupo.</p></div>
+        <div><h3>William Angulo</h3><p>Representante Capitán, encargado de establecer conexiones estratégicas globales.</p></div>
+        <div><h3>Daniel Castro</h3><p>Representante del grupo, enfocado en la inclusión y el impacto social.</p></div>
+        <div><h3>Juan Camilo Ramírez</h3><p>Defensor Capitán, responsable de supervisar los aspectos legales y éticos.</p></div>
+        <div><h3>Alejandro Amaya</h3><p>Defensor, especializado en proteger los intereses del grupo.</p></div>
+        <div><h3>Mateo Díaz</h3><p>Defensor, enfocado en la gestión de riesgos y la planificación estratégica.</p></div>
+    </section>
+
+    <section id="empresas">
+        <h2>Empresas Representadas</h2>
+        <p>Representamos a 90 empresas globales, incluyendo Apple, Microsoft, Tesla, Meta, y Amazon, entre otras.</p>
+    </section>
+
+    <section id="impacto">
+        <h2>Impacto Global</h2>
+        <p>*Los Empresarios* ha dejado una marca significativa en la economía global al fomentar la colaboración entre las principales empresas del mundo...</p>
+    </section>
+
+    <section id="colaboradores">
+        <h2>Colaboradores Internacionales</h2>
+        <ul>
+            <li><b>Apple:</b> Innovación tecnológica.</li>
+            <li><b>Microsoft:</b> Transformación digital.</li>
+            <li><b>Tesla:</b> Movilidad eléctrica.</li>
+            <li><b>Amazon:</b> Comercio global.</li>
+        </ul>
+    </section>
+
+    <section id="faq">
+        <h2>Preguntas Frecuentes</h2>
+        <h3>¿Qué es *Los Empresarios*?</h3>
+        <p>Somos un grupo de seis líderes que representan a 90 de las empresas más importantes del mundo...</p>
+    </section>
+
+    <section id="contacto">
+        <h2>Contacto</h2>
+        <form action="#" method="post">
+            <label for="name">Nombre:</label><br>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="email">Correo Electrónico:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+            <label for="message">Mensaje:</label><br>
+            <textarea id="message" name="message" rows="5" required></textarea><br><br>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <div id="admin-controls" style="display: none;">
         <h3>Controles de Administrador</h3>
         <label for="new-header-title">Título del Encabezado:</label>
         <input type="text" id="new-header-title"><br><br>
@@ -81,13 +155,34 @@
         <button onclick="updatePage()">Guardar Cambios</button>
     </div>
 
+    <footer>
+        <p>&copy; 2025 Los Empresarios. Todos los derechos reservados.</p>
+    </footer>
+
     <script>
-        // Función para habilitar controles de administrador
-        function enableAdmin() {
-            document.getElementById('admin-controls').style.display = 'block';
+        // Contador de visitas almacenado en localStorage
+        let visitCount = localStorage.getItem('visitCount');
+        if (visitCount === null) {
+            visitCount = 0;
+        }
+        visitCount++;
+        localStorage.setItem('visitCount', visitCount);
+        document.getElementById('counter').innerText = visitCount;
+
+        // Contraseña de administrador
+        const adminPassword = "miSuperSecretaContraseña";
+
+        function promptPassword() {
+            const userPassword = prompt("Por favor, introduce la contraseña de administrador:");
+            if (userPassword === adminPassword) {
+                alert("Acceso concedido.");
+                document.getElementById('admin-controls').style.display = 'block';
+                document.getElementById('login-form').style.display = 'none';
+            } else {
+                alert("Contraseña incorrecta. Intenta nuevamente.");
+            }
         }
 
-        // Función para actualizar texto
         function updatePage() {
             const newHeaderTitle = document.getElementById('new-header-title').value;
             const newSubtitle = document.getElementById('new-subtitle').value;
@@ -103,12 +198,8 @@
                 document.getElementById('texto-inicio').innerText = newInicioText;
             }
 
-            alert('Los cambios se han guardado correctamente.');
+            alert("Los cambios se han guardado correctamente.");
         }
     </script>
-
-    <footer>
-        <p>&copy; 2025 Los Empresarios. Todos los derechos reservados.</p>
-    </footer>
 </body>
 </html>
