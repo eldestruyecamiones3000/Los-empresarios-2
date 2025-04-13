@@ -40,9 +40,9 @@
             border-radius: 5px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        #login-form {
-            margin-top: 20px;
+        .edit-controls {
             text-align: center;
+            margin: 10px;
         }
         section {
             margin: 20px;
@@ -60,13 +60,18 @@
     </style>
 </head>
 <body>
-    <header>
+    <header contenteditable="true">
         <h1 id="titulo-header">Los Empresarios</h1>
         <p id="subtitulo-header">Liderazgo, innovación y excelencia empresarial</p>
         <div id="login-form">
             <button onclick="promptPassword()" style="margin-top: 10px; padding: 10px; font-size: 16px;">Ingresar como Administrador</button>
         </div>
     </header>
+
+    <div class="edit-controls" style="display: none;" id="edit-buttons">
+        <button onclick="saveChanges()">Guardar Cambios</button>
+        <button onclick="resetChanges()">Restablecer Cambios</button>
+    </div>
 
     <div id="visit-counter">
         <h2>Bienvenidos</h2>
@@ -84,51 +89,48 @@
         <a href="#contacto">Contacto</a>
     </nav>
 
-    <section id="inicio">
+    <section id="inicio" contenteditable="true">
         <h2>Inicio</h2>
-        <p id="texto-inicio">Bienvenidos al sitio web oficial de *Los Empresarios*. Este grupo está compuesto por seis líderes visionarios, unidos por su pasión por la excelencia y su compromiso con transformar el panorama empresarial global. En esta página encontrarás toda la información sobre nuestra misión, visión y las diversas iniciativas que lideramos. Nos enfocamos en promover la colaboración, la innovación y el impacto positivo en todas las industrias que representamos.</p>
+        <p id="texto-inicio">Bienvenidos al sitio web oficial de *Los Empresarios*. Este grupo está compuesto por seis líderes visionarios...</p>
     </section>
 
-    <section id="historia">
+    <section id="historia" contenteditable="true">
         <h2>Nuestra Historia</h2>
-        <p>*Los Empresarios* fue fundado el <b>11 de abril de 2025</b>, un día que marcó el inicio de una alianza estratégica entre seis líderes comprometidos con transformar el mundo empresarial...</p>
-        <p>Desde sus humildes comienzos, el grupo ha evolucionado significativamente...</p>
+        <p>*Los Empresarios* fue fundado el <b>11 de abril de 2025</b>...</p>
     </section>
 
-    <section id="integrantes">
+    <section id="integrantes" contenteditable="true">
         <h2>Integrantes</h2>
-        <div><h3>Fernando Romero</h3><p>Como Directivo de *Los Empresarios*, Fernando lidera estratégicamente las operaciones del grupo.</p></div>
-        <div><h3>William Angulo</h3><p>Representante Capitán, encargado de establecer conexiones estratégicas globales.</p></div>
-        <div><h3>Daniel Castro</h3><p>Representante del grupo, enfocado en la inclusión y el impacto social.</p></div>
-        <div><h3>Juan Camilo Ramírez</h3><p>Defensor Capitán, responsable de supervisar los aspectos legales y éticos.</p></div>
-        <div><h3>Alejandro Amaya</h3><p>Defensor, especializado en proteger los intereses del grupo.</p></div>
-        <div><h3>Mateo Díaz</h3><p>Defensor, enfocado en la gestión de riesgos y la planificación estratégica.</p></div>
+        <div><h3>Fernando Romero</h3><p>Como Directivo de *Los Empresarios*...</p></div>
+        <div><h3>William Angulo</h3><p>Representante Capitán...</p></div>
+        <div><h3>Daniel Castro</h3><p>Representante...</p></div>
+        <div><h3>Alejandro Amaya</h3><p>Defensor Capitán...</p></div>
+        <div><h3>Juan Camilo Ramírez</h3><p>Defensor...</p></div>
+        <div><h3>Mateo Díaz</h3><p>Defensor...</p></div>
     </section>
 
-    <section id="empresas">
+    <section id="empresas" contenteditable="true">
         <h2>Empresas Representadas</h2>
-        <p>Representamos a 90 empresas globales, incluyendo Apple, Microsoft, Tesla, Meta, y Amazon, entre otras.</p>
+        <p>Representamos a 90 empresas globales...</p>
     </section>
 
-    <section id="impacto">
+    <section id="impacto" contenteditable="true">
         <h2>Impacto Global</h2>
-        <p>*Los Empresarios* ha dejado una marca significativa en la economía global al fomentar la colaboración entre las principales empresas del mundo...</p>
+        <p>*Los Empresarios* ha dejado una marca significativa...</p>
     </section>
 
-    <section id="colaboradores">
+    <section id="colaboradores" contenteditable="true">
         <h2>Colaboradores Internacionales</h2>
         <ul>
             <li><b>Apple:</b> Innovación tecnológica.</li>
             <li><b>Microsoft:</b> Transformación digital.</li>
-            <li><b>Tesla:</b> Movilidad eléctrica.</li>
-            <li><b>Amazon:</b> Comercio global.</li>
         </ul>
     </section>
 
-    <section id="faq">
+    <section id="faq" contenteditable="true">
         <h2>Preguntas Frecuentes</h2>
         <h3>¿Qué es *Los Empresarios*?</h3>
-        <p>Somos un grupo de seis líderes que representan a 90 de las empresas más importantes del mundo...</p>
+        <p>Somos un grupo de seis líderes que representan...</p>
     </section>
 
     <section id="contacto">
@@ -146,13 +148,7 @@
 
     <div id="admin-controls" style="display: none;">
         <h3>Controles de Administrador</h3>
-        <label for="new-header-title">Título del Encabezado:</label>
-        <input type="text" id="new-header-title"><br><br>
-        <label for="new-subtitle">Subtítulo:</label>
-        <input type="text" id="new-subtitle"><br><br>
-        <label for="new-inicio-text">Texto de Inicio:</label>
-        <textarea id="new-inicio-text" rows="3"></textarea><br><br>
-        <button onclick="updatePage()">Guardar Cambios</button>
+        <!-- Aquí puedes agregar controles si quieres más funciones -->
     </div>
 
     <footer>
@@ -160,11 +156,9 @@
     </footer>
 
     <script>
-        // Contador de visitas almacenado en localStorage
+        // Contador de visitas
         let visitCount = localStorage.getItem('visitCount');
-        if (visitCount === null) {
-            visitCount = 0;
-        }
+        if (visitCount === null) visitCount = 0;
         visitCount++;
         localStorage.setItem('visitCount', visitCount);
         document.getElementById('counter').innerText = visitCount;
@@ -178,28 +172,39 @@
                 alert("Acceso concedido.");
                 document.getElementById('admin-controls').style.display = 'block';
                 document.getElementById('login-form').style.display = 'none';
+                document.getElementById('edit-buttons').style.display = 'block';
             } else {
-                alert("Contraseña incorrecta. Intenta nuevamente.");
+                alert("Contraseña incorrecta.");
             }
         }
 
-        function updatePage() {
-            const newHeaderTitle = document.getElementById('new-header-title').value;
-            const newSubtitle = document.getElementById('new-subtitle').value;
-            const newInicioText = document.getElementById('new-inicio-text').value;
-
-            if (newHeaderTitle) {
-                document.getElementById('titulo-header').innerText = newHeaderTitle;
-            }
-            if (newSubtitle) {
-                document.getElementById('subtitulo-header').innerText = newSubtitle;
-            }
-            if (newInicioText) {
-                document.getElementById('texto-inicio').innerText = newInicioText;
-            }
-
-            alert("Los cambios se han guardado correctamente.");
+        // Guardar cambios de elementos editables
+        function saveChanges() {
+            const editables = document.querySelectorAll('[contenteditable]');
+            editables.forEach((el, index) => {
+                localStorage.setItem('editable-' + index, el.innerHTML);
+            });
+            alert("Cambios guardados.");
         }
+
+        // Cargar cambios al iniciar
+        function loadChanges() {
+            const editables = document.querySelectorAll('[contenteditable]');
+            editables.forEach((el, index) => {
+                const saved = localStorage.getItem('editable-' + index);
+                if (saved) el.innerHTML = saved;
+            });
+        }
+
+        // Restablecer cambios
+        function resetChanges() {
+            if (confirm("¿Estás seguro de que deseas restablecer todos los cambios?")) {
+                localStorage.clear();
+                location.reload();
+            }
+        }
+
+        window.onload = loadChanges;
     </script>
 </body>
 </html>
