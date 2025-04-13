@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Los Empresarios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eef2f3;
+        }
+        header {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        nav {
+            background-color: #00509E;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+        #admin-controls {
+            display: none;
+            margin: 20px;
+            padding: 10px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+        }
+        section {
+            margin: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 id="titulo-header">Los Empresarios</h1>
+        <p id="subtitulo-header">Liderazgo, innovación y excelencia empresarial</p>
+        <button onclick="enableAdmin()" style="margin-top: 10px; padding: 5px;">Ingresar como Administrador</button>
+    </header>
+
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#historia">Historia</a>
+        <a href="#integrantes">Integrantes</a>
+        <a href="#empresas">Empresas</a>
+        <a href="#impacto">Impacto Global</a>
+        <a href="#colaboradores">Colaboradores</a>
+    </nav>
+
+    <section id="inicio">
+        <h2>Inicio</h2>
+        <p id="texto-inicio">Bienvenidos al sitio web oficial de *Los Empresarios*, un grupo comprometido con el liderazgo y el desarrollo empresarial.</p>
+    </section>
+
+    <div id="admin-controls">
+        <h3>Controles de Administrador</h3>
+        <label for="new-header-title">Título del Encabezado:</label>
+        <input type="text" id="new-header-title"><br><br>
+        <label for="new-subtitle">Subtítulo:</label>
+        <input type="text" id="new-subtitle"><br><br>
+        <label for="new-inicio-text">Texto de Inicio:</label>
+        <textarea id="new-inicio-text" rows="3"></textarea><br><br>
+        <button onclick="updatePage()">Guardar Cambios</button>
+    </div>
+
+    <script>
+        // Función para habilitar controles de administrador
+        function enableAdmin() {
+            document.getElementById('admin-controls').style.display = 'block';
+        }
+
+        // Función para actualizar texto
+        function updatePage() {
+            const newHeaderTitle = document.getElementById('new-header-title').value;
+            const newSubtitle = document.getElementById('new-subtitle').value;
+            const newInicioText = document.getElementById('new-inicio-text').value;
+
+            if (newHeaderTitle) {
+                document.getElementById('titulo-header').innerText = newHeaderTitle;
+            }
+            if (newSubtitle) {
+                document.getElementById('subtitulo-header').innerText = newSubtitle;
+            }
+            if (newInicioText) {
+                document.getElementById('texto-inicio').innerText = newInicioText;
+            }
+
+            alert('Los cambios se han guardado correctamente.');
+        }
+    </script>
+
+    <footer>
+        <p>&copy; 2025 Los Empresarios. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
