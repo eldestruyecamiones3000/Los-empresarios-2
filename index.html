@@ -74,56 +74,8 @@
             text-align: center;
             padding: 15px 0;
         }
-        .edit-controls {
-            text-align: center;
-            margin-bottom: 20px;
-            display: none;
-        }
 
-        /* Mejora de la sección de contacto */
-        #contacto form {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        #contacto input, #contacto textarea {
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        #contacto textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-        #contacto button {
-            background-color: #62b8b7;
-            color: white;
-            padding: 12px;
-            font-size: 18px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-        }
-        #contacto button:hover {
-            background-color: #4a9c94;
-        }
-
-        /* Estilos para la imagen cargada */
-        #image-preview {
-            margin-top: 20px;
-            max-width: 100%;
-            max-height: 300px;
-            display: none;
-        }
-
+        /* Estilos para agregar imagen */
         .image-controls {
             margin-top: 10px;
             display: none;
@@ -133,6 +85,12 @@
             margin: 5px 0;
             padding: 10px;
         }
+        #image-preview {
+            margin-top: 20px;
+            max-width: 100%;
+            max-height: 300px;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -141,6 +99,10 @@
         <p id="subtitulo-header">Liderazgo, innovación y excelencia empresarial</p>
         <div>
             <button id="login-button" onclick="promptLogin()">Iniciar Sesión</button>
+        </div>
+        <!-- Botón para agregar imagen, visible solo después de iniciar sesión -->
+        <div id="image-upload-container" style="display: none;">
+            <button onclick="addImage()">Agregar Imagen</button>
         </div>
     </header>
 
@@ -163,7 +125,6 @@
     <section id="inicio" contenteditable="true">
         <h2>Inicio</h2>
         <p id="texto-inicio">Bienvenidos al sitio web oficial de *Los Empresarios*. Este grupo está compuesto por seis líderes visionarios que se han reunido para crear un impacto global en la innovación, el liderazgo empresarial y la sostenibilidad...</p>
-        <button onclick="addImage('inicio')">Agregar Imagen</button>
         <div class="image-controls" id="image-controls-inicio">
             <label for="img-width-inicio">Ancho:</label>
             <input type="number" id="img-width-inicio" placeholder="Ancho en px">
@@ -177,15 +138,6 @@
     <section id="historia" contenteditable="true">
         <h2>Nuestra Historia</h2>
         <p>*Los Empresarios* fue fundado el <b>11 de abril de 2025</b>...</p>
-        <button onclick="addImage('historia')">Agregar Imagen</button>
-        <div class="image-controls" id="image-controls-historia">
-            <label for="img-width-historia">Ancho:</label>
-            <input type="number" id="img-width-historia" placeholder="Ancho en px">
-            <label for="img-height-historia">Alto:</label>
-            <input type="number" id="img-height-historia" placeholder="Alto en px">
-            <button onclick="applyImageSize('historia')">Aplicar Tamaño</button>
-        </div>
-        <div id="image-preview-historia"></div>
     </section>
 
     <section id="integrantes" contenteditable="true">
@@ -196,15 +148,6 @@
         <div><h3>Alejandro Amaya</h3><p><b>Rango:</b> Defensor Capitán</p></div>
         <div><h3>Juan Camilo Ramírez</h3><p><b>Rango:</b> Defensor</p></div>
         <div><h3>Mateo Díaz</h3><p><b>Rango:</b> Defensor</p></div>
-        <button onclick="addImage('integrantes')">Agregar Imagen</button>
-        <div class="image-controls" id="image-controls-integrantes">
-            <label for="img-width-integrantes">Ancho:</label>
-            <input type="number" id="img-width-integrantes" placeholder="Ancho en px">
-            <label for="img-height-integrantes">Alto:</label>
-            <input type="number" id="img-height-integrantes" placeholder="Alto en px">
-            <button onclick="applyImageSize('integrantes')">Aplicar Tamaño</button>
-        </div>
-        <div id="image-preview-integrantes"></div>
     </section>
 
     <section id="empresas" contenteditable="false">
@@ -249,8 +192,19 @@
     </footer>
 
     <script>
-        // Función para agregar la imagen
-        function addImage(section) {
+        function promptLogin() {
+            const password = prompt("Introduce la contraseña de administrador:");
+            if (password === "miSuperSecretaContraseña") {
+                alert("Acceso concedido. Ahora puedes editar.");
+                document.getElementById("login-button").style.display = "none";
+                document.getElementById("image-upload-container").style.display = "block"; // Mostrar botón de agregar imagen
+            } else {
+                alert("Contraseña incorrecta. Acceso denegado.");
+            }
+        }
+
+        // Función para agregar la imagen debajo del título
+        function addImage() {
             let fileInput = document.createElement('input');
             fileInput.type = 'file';
             fileInput.accept = 'image/*';
@@ -259,9 +213,9 @@
                 if (file) {
                     let reader = new FileReader();
                     reader.onload = function(e) {
-                        let imageContainer = document.getElementById(`image-preview-${section}`);
-                        imageContainer.innerHTML = `<img src="${e.target.result}" id="img-${section}" style="max-width: 100%; max-height: 300px;">`;
-                        document.getElementById(`image-controls-${section}`).style.display = 'block';
+                        let imageContainer = document.getElementById('image-preview-inicio');
+                        imageContainer.innerHTML = `<img src="${e.target.result}" id="img-inicio" style="max-width: 100%; max-height: 300px;">`;
+                        document.getElementById('image-controls-inicio').style.display = 'block'; // Mostrar controles de tamaño
                     };
                     reader.readAsDataURL(file);
                 }
@@ -269,14 +223,24 @@
             fileInput.click();
         }
 
-        // Función para aplicar el tamaño de la imagen
-        function applyImageSize(section) {
-            let img = document.getElementById(`img-${section}`);
-            let width = document.getElementById(`img-width-${section}`).value;
-            let height = document.getElementById(`img-height-${section}`).value;
-            if (width) img.style.width = width + 'px';
-            if (height) img.style.height = height + 'px';
+        // Función para aplicar el tamaño a la imagen
+        function applyImageSize(sectionId) {
+            let img = document.getElementById(`img-${sectionId}`);
+            let width = document.getElementById(`img-width-${sectionId}`).value;
+            let height = document.getElementById(`img-height-${sectionId}`).value;
+
+            if (width && height) {
+                img.style.width = `${width}px`;
+                img.style.height = `${height}px`;
+            }
         }
+
+        // Contador de visitas
+        let visitCount = localStorage.getItem('visitCount');
+        if (visitCount === null) visitCount = 0;
+        visitCount++;
+        localStorage.setItem('visitCount', visitCount);
+        document.getElementById('counter').innerText = visitCount;
     </script>
 </body>
 </html>
