@@ -1,279 +1,306 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Los Empresarios</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f7fb;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #003366;
-            color: white;
-            text-align: center;
-            padding: 30px;
-        }
-        nav {
-            background-color: #00509E;
-            padding: 15px;
-            text-align: center;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 18px;
-            padding: 5px 10px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-        nav a:hover {
-            background-color: #003366;
-        }
-        #visit-counter {
-            margin: 20px;
-            padding: 15px;
-            background-color: #ffffff;
-            color: #003366;
-            text-align: center;
-            border-radius: 5px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        section {
-            margin: 20px auto;
-            padding: 20px;
-            background: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            max-width: 1200px;
-        }
-        .edit-controls {
-            text-align: center;
-            margin-bottom: 20px;
-            display: none;
-        }
-        footer {
-            background-color: #003366;
-            color: white;
-            text-align: center;
-            padding: 15px 0;
-        }
-        #contacto form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        #contacto label, #contacto input, #contacto textarea, #contacto button {
-            font-size: 16px;
-            padding: 12px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-        #contacto button {
-            background-color: #00509E;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        #contacto button:hover {
-            background-color: #003366;
-        }
-        h2 {
-            color: #003366;
-        }
-        h3 {
-            color: #00509E;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            padding: 5px 0;
-            color: #333;
-        }
-        .integrante, .empresa, .impacto, .colaborador {
-            margin-bottom: 20px;
-        }
-        .integrante p, .empresa p, .impacto p, .colaborador p {
-            font-size: 16px;
-        }
-        .empresa img {
-            width: 100px;
-            height: auto;
-        }
-        .integrante img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Los Empresarios</title>
+  <style>
+    :root {
+      --primary-color: #003366;
+      --secondary-color: #00509E;
+      --background-light: #f0f4f8;
+      --background-dark: #1e1e1e;
+      --text-color-light: #1a1a1a;
+      --text-color-dark: #f0f0f0;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--background-light);
+      color: var(--text-color-light);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body.dark-mode {
+      background-color: var(--background-dark);
+      color: var(--text-color-dark);
+    }
+
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    nav {
+      background-color: var(--secondary-color);
+      padding: 1rem;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin: 2rem;
+      padding: 2rem;
+      transition: background-color 0.3s;
+    }
+
+    body.dark-mode section {
+      background-color: #2b2b2b;
+    }
+
+    #visit-counter {
+      text-align: center;
+      margin: 1rem auto;
+      padding: 1rem;
+      max-width: 600px;
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    body.dark-mode #visit-counter {
+      background-color: #2b2b2b;
+    }
+
+    footer {
+      background-color: var(--primary-color);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+
+    .edit-controls {
+      text-align: center;
+      display: none;
+      margin: 1rem auto;
+    }
+
+    .edit-controls button,
+    #login-button {
+      margin: 0.5rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 8px;
+      background-color: var(--secondary-color);
+      color: white;
+      cursor: pointer;
+    }
+
+    .edit-controls button:hover,
+    #login-button:hover {
+      background-color: #003f7d;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    form button {
+      background-color: var(--secondary-color);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      section {
+        margin: 1rem;
+        padding: 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <h1 id="titulo-header">Los Empresarios</h1>
+    <p id="subtitulo-header">Liderazgo, innovación y excelencia empresarial</p>
+    <button id="login-button" onclick="promptLogin()">Iniciar Sesión</button>
+    <button onclick="toggleDarkMode()">Modo Oscuro</button>
+  </header>
 
-    <header>
-        <h1 id="titulo-header">Los Empresarios</h1>
-        <p id="subtitulo-header">Liderazgo, innovación y excelencia empresarial</p>
-        <div>
-            <button id="login-button" onclick="promptLogin()">Iniciar Sesión</button>
-        </div>
-    </header>
+  <div id="visit-counter">
+    <h2>Bienvenidos</h2>
+    <p>¡Has visitado esta página <span id="counter"></span> veces!</p>
+  </div>
 
-    <div id="visit-counter">
-        <h2>Bienvenidos</h2>
-        <p>¡Has visitado esta página <span id="counter"></span> veces!</p>
-    </div>
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#historia">Historia</a>
+    <a href="#integrantes">Integrantes</a>
+    <a href="#empresas">Empresas</a>
+    <a href="#impacto">Impacto Global</a>
+    <a href="#colaboradores">Colaboradores</a>
+    <a href="#faq">Preguntas Frecuentes</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
 
-    <nav>
-        <a href="#inicio">Inicio</a>
-        <a href="#historia">Historia</a>
-        <a href="#integrantes">Integrantes</a>
-        <a href="#empresas">Empresas</a>
-        <a href="#impacto">Impacto Global</a>
-        <a href="#colaboradores">Colaboradores</a>
-        <a href="#faq">Preguntas Frecuentes</a>
-        <a href="#contacto">Contacto</a>
-    </nav>
+  <section id="inicio" contenteditable="false">
+    <h2>Inicio</h2>
+    <p>Bienvenidos al sitio web oficial de *Los Empresarios*. Este grupo está compuesto por seis líderes visionarios dedicados a la transformación empresarial, el liderazgo estratégico y la innovación ética. Su enfoque colaborativo ha permitido representar a más de 90 empresas a nivel internacional.</p>
+  </section>
 
-    <section id="inicio" contenteditable="false">
-        <h2>Inicio</h2>
-        <p id="texto-inicio">Bienvenidos al sitio web oficial de *Los Empresarios*. Este grupo está compuesto por seis líderes visionarios comprometidos con la transformación de la industria global. La misión de nuestro grupo es liderar la innovación, fomentar la excelencia empresarial, y representar con ética a compañías de todo el mundo.</p>
-    </section>
+  <section id="historia" contenteditable="false">
+    <h2>Nuestra Historia</h2>
+    <p>*Los Empresarios* fue fundado el 11 de abril de 2025 por seis emprendedores con el objetivo de generar impacto positivo a través de la asesoría, la representación empresarial y el desarrollo de iniciativas globales. A lo largo del tiempo, se han consolidado como una red de confianza entre líderes de múltiples sectores.</p>
+  </section>
 
-    <section id="historia" contenteditable="false">
-        <h2>Nuestra Historia</h2>
-        <p>*Los Empresarios* fue fundado el <b>11 de abril de 2025</b> con el objetivo de unir a seis líderes visionarios de distintos sectores empresariales. A través de nuestra red global de colaboradores y empresas representadas, buscamos impulsar el desarrollo de soluciones innovadoras que beneficien a la sociedad y promuevan el crecimiento económico de diversas industrias. A lo largo de los años, hemos logrado establecer alianzas estratégicas con empresas de todo el mundo, lo que ha permitido expandir nuestro impacto a nivel global.</p>
-    </section>
+  <section id="integrantes" contenteditable="false">
+    <h2>Integrantes</h2>
+    <ul>
+      <li><strong>Fernando Romero</strong> – Directivo</li>
+      <li><strong>William Angulo</strong> – Representante Capitán</li>
+      <li><strong>Daniel Castro</strong> – Representante</li>
+      <li><strong>Alejandro Amaya</strong> – Defensor Capitán</li>
+      <li><strong>Juan Camilo Ramírez</strong> – Defensor</li>
+      <li><strong>Mateo Díaz</strong> – Defensor</li>
+    </ul>
+  </section>
 
-    <section id="integrantes" contenteditable="false">
-        <h2>Integrantes</h2>
-        <div class="integrante"><h3>Fernando Romero</h3><p><b>Rango:</b> Directivo. Líder de estrategias y decisiones clave. Fernando es el cerebro detrás de las operaciones globales, encargándose de guiar al equipo hacia la innovación.</p></div>
-        <div class="integrante"><h3>William Angulo</h3><p><b>Rango:</b> Representante Capitán. Encargado de las relaciones estratégicas y alianzas. William es responsable de expandir la red de colaboración de Los Empresarios.</p></div>
-        <div class="integrante"><h3>Daniel Castro</h3><p><b>Rango:</b> Representante. Apoya en negociaciones clave y proyectos empresariales. Daniel tiene una gran experiencia en la gestión de relaciones comerciales internacionales.</p></div>
-        <div class="integrante"><h3>Alejandro Amaya</h3><p><b>Rango:</b> Defensor Capitán. Supervisión ética y cumplimiento de normativas. Alejandro es quien vela por que todos nuestros proyectos sean transparentes y éticos.</p></div>
-        <div class="integrante"><h3>Juan Camilo Ramírez</h3><p><b>Rango:</b> Defensor. Promueve buenas prácticas y la responsabilidad corporativa. Juan Camilo es clave para mantener la integridad en nuestras operaciones.</p></div>
-        <div class="integrante"><h3>Mateo Díaz</h3><p><b>Rango:</b> Defensor. Gestión de conflictos y promoción de la ética interna. Mateo trabaja para asegurarse de que cada miembro del grupo cumpla con los más altos estándares de conducta empresarial.</p></div>
-    </section>
+  <section id="empresas" contenteditable="false">
+    <h2>Empresas Representadas</h2>
+    <p>Representamos a más de 90 empresas globales en sectores como tecnología, energía, salud, finanzas, educación y desarrollo sostenible. Nos enfocamos en ofrecer asesoría estratégica, planes de crecimiento y alianzas sólidas para cada empresa afiliada.</p>
+  </section>
 
-    <section id="empresas" contenteditable="false">
-        <h2>Empresas Representadas</h2>
-        <div class="empresa"><h3>Apple</h3><p>Innovación tecnológica que cambia el mundo.</p></div>
-        <div class="empresa"><h3>Microsoft</h3><p>Líder en transformación digital y servicios en la nube.</p></div>
-        <div class="empresa"><h3>Amazon</h3><p>El gigante del comercio electrónico global.</p></div>
-        <div class="empresa"><h3>Tesla</h3><p>Pionero en el desarrollo de vehículos eléctricos sostenibles.</p></div>
-        <div class="empresa"><h3>Netflix</h3><p>Revolución del entretenimiento digital.</p></div>
-    </section>
+  <section id="impacto" contenteditable="false">
+    <h2>Impacto Global</h2>
+    <p>Nuestra organización ha liderado múltiples proyectos de transformación digital, inclusión financiera y responsabilidad social empresarial en distintos países. Gracias a nuestras alianzas internacionales, contribuimos con innovación, sostenibilidad y liderazgo ético.</p>
+  </section>
 
-    <section id="impacto" contenteditable="false">
-        <h2>Impacto Global</h2>
-        <p>*Los Empresarios* ha dejado una huella importante en el mundo empresarial. A través de nuestras iniciativas, hemos apoyado a más de 200 empresas emergentes, fomentando la innovación y el crecimiento económico en distintas regiones del mundo. Nuestros programas de sostenibilidad y responsabilidad corporativa han sido implementados globalmente, dejando un impacto positivo y duradero en la sociedad. Además, nuestra red de colaboradores internacionales se sigue expandiendo, lo que nos permite seguir generando impacto en nuevas áreas.</p>
-    </section>
+  <section id="colaboradores" contenteditable="false">
+    <h2>Colaboradores Internacionales</h2>
+    <ul>
+      <li><strong>Apple:</strong> Innovación tecnológica.</li>
+      <li><strong>Microsoft:</strong> Transformación digital.</li>
+      <li><strong>Tesla:</strong> Energía sostenible.</li>
+      <li><strong>Amazon:</strong> Logística global y e-commerce.</li>
+    </ul>
+  </section>
 
-    <section id="colaboradores" contenteditable="false">
-        <h2>Colaboradores Internacionales</h2>
-        <ul>
-            <li><b>Apple:</b> Innovación tecnológica.</li>
-            <li><b>Microsoft:</b> Transformación digital y modernización de servicios.</li>
-            <li><b>Amazon:</b> E-commerce y logística global.</li>
-            <li><b>Tesla:</b> Energía renovable y automóviles eléctricos.</li>
-        </ul>
-    </section>
+  <section id="faq" contenteditable="false">
+    <h2>Preguntas Frecuentes</h2>
+    <h3>¿Qué es *Los Empresarios*?</h3>
+    <p>Somos un grupo de seis líderes que representan empresas, lideran proyectos innovadores y fomentan el desarrollo ético y sostenible en todo el mundo.</p>
+    <h3>¿Puedo unirme a la organización?</h3>
+    <p>La membresía está reservada para líderes empresariales con trayectoria comprobada, visión estratégica y compromiso con los valores del grupo. Se requiere postulación y evaluación previa.</p>
+  </section>
 
-    <section id="faq" contenteditable="false">
-        <h2>Preguntas Frecuentes</h2>
-        <h3>¿Qué es *Los Empresarios*?</h3>
-        <p>Somos un grupo de seis líderes empresariales que representan a empresas globales en áreas como tecnología, salud, finanzas y sostenibilidad. Nos dedicamos a fomentar la innovación y el liderazgo ético en el ámbito empresarial, y trabajamos con empresas de todo el mundo para generar un impacto positivo.</p>
-        <h3>¿Qué tipo de empresas representan?</h3>
-        <p>Representamos a empresas globales líderes en sus respectivos sectores, desde tecnología hasta energía renovable, pasando por salud, logística y más. Nos enfocamos en crear alianzas que promuevan la innovación y el crecimiento empresarial sostenible.</p>
-    </section>
+  <section id="contacto" contenteditable="false">
+    <h2>Contacto</h2>
+    <form id="contact-form">
+      <label for="name">Nombre completo:</label>
+      <input type="text" id="name" name="name" required />
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="email" name="email" required />
+      <label for="message">Mensaje:</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+    <p id="contact-response"></p>
+  </section>
 
-    <section id="contacto" contenteditable="false">
-        <h2>Contacto</h2>
-        <form action="#" method="post">
-            <label for="name">Nombre:</label><br>
-            <input type="text" id="name" name="name" required><br><br>
-            <label for="email">Correo Electrónico:</label><br>
-            <input type="email" id="email" name="email" required><br><br>
-            <label for="message">Mensaje:</label><br>
-            <textarea id="message" name="message" rows="5" required></textarea><br><br>
-            <button type="submit">Enviar</button>
-        </form>
-    </section>
+  <div id="admin-controls" class="edit-controls">
+    <button onclick="enableEditing()">Habilitar Edición</button>
+    <button onclick="disableEditing()">Deshabilitar Edición</button>
+    <button onclick="saveChanges()">Guardar Cambios</button>
+    <button onclick="resetChanges()">Restablecer Cambios</button>
+  </div>
 
-    <div id="admin-controls" class="edit-controls">
-        <button onclick="enableEditing()">Habilitar Edición</button>
-        <button onclick="disableEditing()">Deshabilitar Edición</button>
-        <button onclick="saveChanges()">Guardar Cambios</button>
-        <button onclick="resetChanges()">Restablecer Cambios</button>
-    </div>
+  <footer>
+    <p>&copy; 2025 Los Empresarios. Todos los derechos reservados.</p>
+  </footer>
 
-    <footer>
-        <p>&copy; 2025 Los Empresarios. Todos los derechos reservados.</p>
-    </footer>
+  <script>
+    function promptLogin() {
+      const password = prompt("Introduce la contraseña de administrador:");
+      if (password === "miSuperSecretaContraseña") {
+        alert("Acceso concedido.");
+        document.getElementById("login-button").style.display = "none";
+        document.querySelector(".edit-controls").style.display = "block";
+      } else {
+        alert("Contraseña incorrecta.");
+      }
+    }
 
-    <script>
-        function promptLogin() {
-            const password = prompt("Introduce la contraseña de administrador:");
-            if (password === "miSuperSecretaContraseña") {
-                alert("Acceso concedido. Ahora puedes editar.");
-                document.getElementById("login-button").style.display = "none";
-                document.querySelector(".edit-controls").style.display = "block";
-            } else {
-                alert("Contraseña incorrecta. Acceso denegado.");
-            }
-        }
+    function enableEditing() {
+      document.querySelectorAll('section').forEach(el => {
+        el.contentEditable = "true";
+      });
+      alert("Modo edición habilitado.");
+    }
 
-        function enableEditing() {
-            document.querySelectorAll('section').forEach(section => {
-                section.contentEditable = "true";
-            });
-            alert("Modo edición habilitado.");
-        }
+    function disableEditing() {
+      document.querySelectorAll('section').forEach(el => {
+        el.contentEditable = "false";
+      });
+      alert("Modo edición deshabilitado.");
+    }
 
-        function disableEditing() {
-            document.querySelectorAll('section').forEach(section => {
-                section.contentEditable = "false";
-            });
-            alert("Modo edición deshabilitado.");
-        }
+    function saveChanges() {
+      const editables = document.querySelectorAll('[contenteditable]');
+      editables.forEach((el, index) => {
+        localStorage.setItem('editable-' + index, el.innerHTML);
+      });
+      alert("Cambios guardados.");
+    }
 
-        function saveChanges() {
-            const editables = document.querySelectorAll('[contenteditable]');
-            editables.forEach((el, index) => {
-                localStorage.setItem('editable-' + index, el.innerHTML);
-            });
-            alert("Cambios guardados.");
-        }
+    function resetChanges() {
+      if (confirm("¿Deseas restablecer los cambios?")) {
+        localStorage.clear();
+        location.reload();
+      }
+    }
 
-        function resetChanges() {
-            if (confirm("¿Estás seguro de que deseas restablecer todos los cambios?")) {
-                localStorage.clear();
-                location.reload();
-            }
-        }
+    function loadChanges() {
+      const editables = document.querySelectorAll('[contenteditable]');
+      editables.forEach((el, index) => {
+        const saved = localStorage.getItem('editable-' + index);
+        if (saved) el.innerHTML = saved;
+      });
+    }
 
-        function loadChanges() {
-            const editables = document.querySelectorAll('[contenteditable]');
-            editables.forEach((el, index) => {
-                const saved = localStorage.getItem('editable-' + index);
-                if (saved) el.innerHTML = saved;
-            });
-        }
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
 
-        let visitCount = localStorage.getItem('visitCount');
-        if (visitCount === null) visitCount = 0;
-        visitCount++;
-        localStorage.setItem('visitCount', visitCount);
-        document.getElementById('counter').innerText = visitCount;
+    // Visitas
+    let visitCount = localStorage.getItem('visitCount') || 0;
+    visitCount++;
+    localStorage.setItem('visitCount', visitCount);
+    document.getElementById('counter').innerText = visitCount;
 
-        window.onload = loadChanges;
-    </script>
+    window.onload = loadChanges;
 
+    // Formulario de contacto
+    document.getElementById("contact-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      document.getElementById("contact-response").innerText = "Gracias por tu mensaje. Pronto nos pondremos en contacto.";
+      this.reset();
+    });
+  </script>
 </body>
 </html>
