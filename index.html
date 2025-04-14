@@ -154,11 +154,10 @@
     </footer>
 
     <script>
-        const adminPassword = "miSuperSecretaContraseña";
-
         function promptLogin() {
             const password = prompt("Introduce la contraseña de administrador:");
-            if (password === adminPassword) {
+            // Replace the following condition with a secure server-side validation
+            if (password === "miSuperSecretaContraseña") {
                 alert("Acceso concedido. Ahora puedes editar.");
                 document.getElementById("login-button").style.display = "none";
                 document.querySelector(".edit-controls").style.display = "block";
