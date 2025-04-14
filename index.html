@@ -2,24 +2,24 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Los Empresarios</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Los Empresarios</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f4f7fb;
             margin: 0;
             padding: 0;
-            background-color: #eef2f3;
         }
         header {
             background-color: #003366;
             color: white;
             text-align: center;
-            padding: 20px;
+            padding: 30px;
         }
         nav {
             background-color: #00509E;
-            padding: 10px;
+            padding: 15px;
             text-align: center;
         }
         nav a {
@@ -27,13 +27,16 @@
             text-decoration: none;
             margin: 0 15px;
             font-size: 18px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
         nav a:hover {
-            text-decoration: underline;
+            background-color: #003366;
         }
         #visit-counter {
             margin: 20px;
-            padding: 10px;
+            padding: 15px;
             background-color: #ffffff;
             color: #003366;
             text-align: center;
@@ -41,11 +44,12 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         section {
-            margin: 20px;
+            margin: 20px auto;
             padding: 20px;
-            background: white;
+            background: #ffffff;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
         }
         .edit-controls {
             text-align: center;
@@ -58,34 +62,61 @@
             text-align: center;
             padding: 15px 0;
         }
-        #contact-form div {
-            margin-bottom: 15px;
+        #contacto form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
         }
-        #contact-form input, #contact-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ddd;
+        #contacto label, #contacto input, #contacto textarea, #contacto button {
+            font-size: 16px;
+            padding: 12px;
             border-radius: 5px;
+            border: 1px solid #ccc;
         }
-        #contact-form button {
-            background-color: #003366;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        #contact-form button:hover {
+        #contacto button {
             background-color: #00509E;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
-        #form-status {
-            margin-top: 20px;
-            color: green;
+        #contacto button:hover {
+            background-color: #003366;
+        }
+        h2 {
+            color: #003366;
+        }
+        h3 {
+            color: #00509E;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 5px 0;
+            color: #333;
+        }
+        .integrante, .empresa, .impacto, .colaborador {
+            margin-bottom: 20px;
+        }
+        .integrante p, .empresa p, .impacto p, .colaborador p {
+            font-size: 16px;
+        }
+        .empresa img {
+            width: 100px;
+            height: auto;
+        }
+        .integrante img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
         }
     </style>
 </head>
 <body>
+
     <header>
         <h1 id="titulo-header">Los Empresarios</h1>
         <p id="subtitulo-header">Liderazgo, innovación y excelencia empresarial</p>
@@ -112,108 +143,75 @@
 
     <section id="inicio" contenteditable="false">
         <h2>Inicio</h2>
-        <p id="texto-inicio">
-            Bienvenidos al sitio web oficial de <strong>Los Empresarios</strong>. Este grupo está compuesto por seis líderes visionarios que se han unido con un solo propósito: transformar el mundo empresarial con estrategias innovadoras, liderazgo responsable y un enfoque en la excelencia. 
-            <br><br>
-            Nuestro compromiso es impulsar el crecimiento económico a nivel global, estableciendo alianzas estratégicas y colaboraciones que generen un impacto positivo en la sociedad y en las empresas que representamos. 
-            <br><br>
-            A lo largo de nuestra historia, hemos sido testigos de cómo las decisiones valientes y la cooperación entre los líderes empresariales pueden cambiar el curso de la economía mundial. 
-            <br><br>
-            Te invitamos a conocer más sobre nuestra visión, nuestros logros y las empresas que confiaron en nosotros para llevar sus proyectos al siguiente nivel.
-        </p>
+        <p id="texto-inicio">Bienvenidos al sitio web oficial de *Los Empresarios*. Este grupo está compuesto por seis líderes visionarios comprometidos con la transformación de la industria global. La misión de nuestro grupo es liderar la innovación, fomentar la excelencia empresarial, y representar con ética a compañías de todo el mundo.</p>
     </section>
 
     <section id="historia" contenteditable="false">
         <h2>Nuestra Historia</h2>
-        <p>
-            *Los Empresarios* fue fundado el <b>11 de abril de 2025</b> por un grupo de individuos con un sueño común: crear un grupo empresarial que no solo busque la rentabilidad, sino que también se enfoque en el bienestar de la sociedad. Desde sus inicios, nuestro objetivo ha sido consolidar una red de empresas que promuevan la innovación, la sostenibilidad y el liderazgo responsable. 
-            <br><br>
-            En el transcurso de los primeros años, logramos asociarnos con empresas globales que comparten nuestra visión y valores, y establecimos importantes lazos con organizaciones internacionales. Cada miembro de *Los Empresarios* aporta su experiencia y habilidades en áreas clave como la gestión, la estrategia empresarial, la innovación tecnológica y la responsabilidad social. 
-            <br><br>
-            Hoy en día, nuestra influencia se extiende por todo el mundo, y estamos en una posición privilegiada para generar cambios significativos en los sectores que representamos. A través de nuestra historia, hemos demostrado que un enfoque colaborativo y responsable puede cambiar el mundo para mejor.
-        </p>
+        <p>*Los Empresarios* fue fundado el <b>11 de abril de 2025</b> con el objetivo de unir a seis líderes visionarios de distintos sectores empresariales. A través de nuestra red global de colaboradores y empresas representadas, buscamos impulsar el desarrollo de soluciones innovadoras que beneficien a la sociedad y promuevan el crecimiento económico de diversas industrias. A lo largo de los años, hemos logrado establecer alianzas estratégicas con empresas de todo el mundo, lo que ha permitido expandir nuestro impacto a nivel global.</p>
     </section>
 
     <section id="integrantes" contenteditable="false">
         <h2>Integrantes</h2>
-        <div><h3>Fernando Romero</h3><p><b>Rango:</b> Directivo. Con una vasta experiencia en la industria financiera, Fernando ha liderado varios proyectos de expansión internacional y es conocido por su visión estratégica.</p></div>
-        <div><h3>William Angulo</h3><p><b>Rango:</b> Representante Capitán. William es un experto en desarrollo de negocios y relaciones internacionales. Ha jugado un papel clave en la formación de alianzas estratégicas con empresas globales.</p></div>
-        <div><h3>Daniel Castro</h3><p><b>Rango:</b> Representante. Daniel es un apasionado del emprendimiento y la innovación. Ha liderado múltiples iniciativas para promover la sostenibilidad dentro de las empresas que representa.</p></div>
-        <div><h3>Alejandro Amaya</h3><p><b>Rango:</b> Defensor Capitán. Alejandro ha sido fundamental en la creación de políticas internas orientadas a la responsabilidad social y la ética empresarial.</p></div>
-        <div><h3>Juan Camilo Ramírez</h3><p><b>Rango:</b> Defensor. Con una sólida formación en derechos humanos y políticas públicas, Juan Camilo trabaja en estrecha colaboración con organizaciones gubernamentales y no gubernamentales.</p></div>
-        <div><h3>Mateo Díaz</h3><p><b>Rango:</b> Defensor. Mateo es un experto en desarrollo de talento y cultura organizacional, contribuyendo a la creación de un entorno de trabajo inclusivo y diverso.</p></div>
+        <div class="integrante"><h3>Fernando Romero</h3><p><b>Rango:</b> Directivo. Líder de estrategias y decisiones clave. Fernando es el cerebro detrás de las operaciones globales, encargándose de guiar al equipo hacia la innovación.</p></div>
+        <div class="integrante"><h3>William Angulo</h3><p><b>Rango:</b> Representante Capitán. Encargado de las relaciones estratégicas y alianzas. William es responsable de expandir la red de colaboración de Los Empresarios.</p></div>
+        <div class="integrante"><h3>Daniel Castro</h3><p><b>Rango:</b> Representante. Apoya en negociaciones clave y proyectos empresariales. Daniel tiene una gran experiencia en la gestión de relaciones comerciales internacionales.</p></div>
+        <div class="integrante"><h3>Alejandro Amaya</h3><p><b>Rango:</b> Defensor Capitán. Supervisión ética y cumplimiento de normativas. Alejandro es quien vela por que todos nuestros proyectos sean transparentes y éticos.</p></div>
+        <div class="integrante"><h3>Juan Camilo Ramírez</h3><p><b>Rango:</b> Defensor. Promueve buenas prácticas y la responsabilidad corporativa. Juan Camilo es clave para mantener la integridad en nuestras operaciones.</p></div>
+        <div class="integrante"><h3>Mateo Díaz</h3><p><b>Rango:</b> Defensor. Gestión de conflictos y promoción de la ética interna. Mateo trabaja para asegurarse de que cada miembro del grupo cumpla con los más altos estándares de conducta empresarial.</p></div>
     </section>
 
     <section id="empresas" contenteditable="false">
         <h2>Empresas Representadas</h2>
-        <p>
-            Representamos a más de 90 empresas globales que operan en diversas industrias, desde la tecnología hasta la energía renovable. Estas empresas han confiado en nosotros para gestionar sus relaciones empresariales, desarrollar nuevas oportunidades de mercado y contribuir al desarrollo social y económico.
-            <br><br>
-            Entre las empresas que representamos, se incluyen grandes nombres como <strong>Apple</strong>, <strong>Microsoft</strong>, <strong>Tesla</strong>, <strong>Amazon</strong>, <strong>Google</strong>, entre otras. Cada una de estas empresas comparte nuestro enfoque en la innovación, la sostenibilidad y la responsabilidad social.
-            <br><br>
-            Nuestro trabajo con estas empresas ha permitido crear soluciones que no solo benefician a los sectores empresariales, sino también a la comunidad en general, apoyando la creación de empleos, el desarrollo de nuevas tecnologías y la implementación de políticas sostenibles.
-        </p>
+        <div class="empresa"><h3>Apple</h3><p>Innovación tecnológica que cambia el mundo.</p></div>
+        <div class="empresa"><h3>Microsoft</h3><p>Líder en transformación digital y servicios en la nube.</p></div>
+        <div class="empresa"><h3>Amazon</h3><p>El gigante del comercio electrónico global.</p></div>
+        <div class="empresa"><h3>Tesla</h3><p>Pionero en el desarrollo de vehículos eléctricos sostenibles.</p></div>
+        <div class="empresa"><h3>Netflix</h3><p>Revolución del entretenimiento digital.</p></div>
     </section>
 
     <section id="impacto" contenteditable="false">
         <h2>Impacto Global</h2>
-        <p>
-            Desde nuestra fundación, *Los Empresarios* ha dejado una huella significativa en la economía global. Hemos promovido iniciativas que abarcan desde la transformación digital de empresas hasta el impulso de proyectos sociales que benefician a miles de personas en todo el mundo.
-            <br><br>
-            Nuestra visión ha llevado a la creación de nuevas oportunidades de empleo, el desarrollo de comunidades locales y la creación de soluciones tecnológicas que están cambiando industrias enteras. Además, hemos fomentado el compromiso con la sostenibilidad, ayudando a las empresas que representamos a reducir su huella de carbono y adoptar prácticas responsables con el medio ambiente.
-            <br><br>
-            *Los Empresarios* sigue siendo un referente de liderazgo y cooperación internacional, mostrando cómo un enfoque colaborativo puede llevar a la innovación y al progreso global.
-        </p>
+        <p>*Los Empresarios* ha dejado una huella importante en el mundo empresarial. A través de nuestras iniciativas, hemos apoyado a más de 200 empresas emergentes, fomentando la innovación y el crecimiento económico en distintas regiones del mundo. Nuestros programas de sostenibilidad y responsabilidad corporativa han sido implementados globalmente, dejando un impacto positivo y duradero en la sociedad. Además, nuestra red de colaboradores internacionales se sigue expandiendo, lo que nos permite seguir generando impacto en nuevas áreas.</p>
     </section>
 
     <section id="colaboradores" contenteditable="false">
         <h2>Colaboradores Internacionales</h2>
         <ul>
-            <li><b>Apple:</b> Innovación tecnológica y desarrollo de soluciones para el futuro digital.</li>
-            <li><b>Microsoft:</b> Transformación digital y colaboración en proyectos educativos y tecnológicos.</li>
-            <li><b>Tesla:</b> Liderazgo en la transición energética hacia fuentes de energía renovables.</li>
-            <li><b>Amazon:</b> Expansión en el comercio global y apoyo a pequeñas y medianas empresas.</li>
-            <li><b>Google:</b> Desarrollo de soluciones de inteligencia artificial y sostenibilidad tecnológica.</li>
+            <li><b>Apple:</b> Innovación tecnológica.</li>
+            <li><b>Microsoft:</b> Transformación digital y modernización de servicios.</li>
+            <li><b>Amazon:</b> E-commerce y logística global.</li>
+            <li><b>Tesla:</b> Energía renovable y automóviles eléctricos.</li>
         </ul>
     </section>
 
     <section id="faq" contenteditable="false">
         <h2>Preguntas Frecuentes</h2>
         <h3>¿Qué es *Los Empresarios*?</h3>
-        <p>Somos un grupo de seis líderes que representan empresas globales, con el objetivo de transformar la industria mediante la innovación, la sostenibilidad y el liderazgo empresarial.</p>
-        <h3>¿Cómo puedo contactar con *Los Empresarios*?</h3>
-        <p>Puedes hacerlo a través de nuestro formulario de contacto en la sección correspondiente. Estaremos encantados de atenderte.</p>
-        <h3>¿Qué empresas representan a *Los Empresarios*?</h3>
-        <p>Representamos a más de 90 empresas de distintos sectores, incluyendo tecnología, energía renovable, comercio, y más.</p>
-        <h3>¿Puedo colaborar con *Los Empresarios*?</h3>
-        <p>¡Sí! Estamos siempre en busca de nuevas oportunidades de colaboración con empresas y organizaciones que compartan nuestros valores.</p>
+        <p>Somos un grupo de seis líderes empresariales que representan a empresas globales en áreas como tecnología, salud, finanzas y sostenibilidad. Nos dedicamos a fomentar la innovación y el liderazgo ético en el ámbito empresarial, y trabajamos con empresas de todo el mundo para generar un impacto positivo.</p>
+        <h3>¿Qué tipo de empresas representan?</h3>
+        <p>Representamos a empresas globales líderes en sus respectivos sectores, desde tecnología hasta energía renovable, pasando por salud, logística y más. Nos enfocamos en crear alianzas que promuevan la innovación y el crecimiento empresarial sostenible.</p>
     </section>
 
     <section id="contacto" contenteditable="false">
         <h2>Contacto</h2>
-        <form id="contact-form" onsubmit="return validateForm()">
-            <div>
-                <label for="name">Nombre:</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div>
-                <label for="email">Correo Electrónico:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div>
-                <label for="subject">Asunto:</label>
-                <input type="text" id="subject" name="subject" required>
-            </div>
-            <div>
-                <label for="message">Mensaje:</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-            </div>
-            <div>
-                <button type="submit">Enviar</button>
-            </div>
+        <form action="#" method="post">
+            <label for="name">Nombre:</label><br>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="email">Correo Electrónico:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+            <label for="message">Mensaje:</label><br>
+            <textarea id="message" name="message" rows="5" required></textarea><br><br>
+            <button type="submit">Enviar</button>
         </form>
-        <div id="form-status"></div>
     </section>
+
+    <div id="admin-controls" class="edit-controls">
+        <button onclick="enableEditing()">Habilitar Edición</button>
+        <button onclick="disableEditing()">Deshabilitar Edición</button>
+        <button onclick="saveChanges()">Guardar Cambios</button>
+        <button onclick="resetChanges()">Restablecer Cambios</button>
+    </div>
 
     <footer>
         <p>&copy; 2025 Los Empresarios. Todos los derechos reservados.</p>
@@ -268,39 +266,6 @@
             });
         }
 
-        function validateForm() {
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-
-            if (!name || !email || !subject || !message) {
-                alert("Todos los campos son obligatorios.");
-                return false;
-            }
-
-            if (!validateEmail(email)) {
-                alert("Por favor, ingresa un correo electrónico válido.");
-                return false;
-            }
-
-            sendForm(name, email, subject, message);
-            return false;
-        }
-
-        // Validación de correo electrónico
-        function validateEmail(email) {
-            const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-            return re.test(email);
-        }
-
-        // Función para simular el envío del formulario
-        function sendForm(name, email, subject, message) {
-            document.getElementById('form-status').innerText = "¡Gracias por tu mensaje, " + name + "! Te responderemos lo antes posible.";
-            document.getElementById('contact-form').reset();
-        }
-
-        // Contador de visitas
         let visitCount = localStorage.getItem('visitCount');
         if (visitCount === null) visitCount = 0;
         visitCount++;
@@ -309,5 +274,6 @@
 
         window.onload = loadChanges;
     </script>
+
 </body>
 </html>
