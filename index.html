@@ -31,7 +31,7 @@
         nav a:hover {
             text-decoration: underline;
         }
-        #visit-counter, #admin-controls {
+        #visit-counter {
             margin: 20px;
             padding: 10px;
             background-color: #ffffff;
@@ -40,16 +40,17 @@
             border-radius: 5px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        .edit-controls {
-            text-align: center;
-            margin: 10px;
-        }
         section {
             margin: 20px;
             padding: 20px;
             background: white;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .edit-controls {
+            text-align: center;
+            margin-bottom: 20px;
+            display: none;
         }
         footer {
             background-color: #003366;
@@ -60,18 +61,13 @@
     </style>
 </head>
 <body>
-    <header contenteditable="true">
+    <header>
         <h1 id="titulo-header">Los Empresarios</h1>
         <p id="subtitulo-header">Liderazgo, innovación y excelencia empresarial</p>
-        <div id="login-form">
-            <button onclick="promptPassword()" style="margin-top: 10px; padding: 10px; font-size: 16px;">Ingresar como Administrador</button>
+        <div>
+            <button id="login-button" onclick="promptLogin()">Iniciar Sesión</button>
         </div>
     </header>
-
-    <div class="edit-controls" style="display: none;" id="edit-buttons">
-        <button onclick="saveChanges()">Guardar Cambios</button>
-        <button onclick="resetChanges()">Restablecer Cambios</button>
-    </div>
 
     <div id="visit-counter">
         <h2>Bienvenidos</h2>
@@ -89,37 +85,37 @@
         <a href="#contacto">Contacto</a>
     </nav>
 
-    <section id="inicio" contenteditable="true">
+    <section id="inicio" contenteditable="false">
         <h2>Inicio</h2>
         <p id="texto-inicio">Bienvenidos al sitio web oficial de *Los Empresarios*. Este grupo está compuesto por seis líderes visionarios...</p>
     </section>
 
-    <section id="historia" contenteditable="true">
+    <section id="historia" contenteditable="false">
         <h2>Nuestra Historia</h2>
         <p>*Los Empresarios* fue fundado el <b>11 de abril de 2025</b>...</p>
     </section>
 
-    <section id="integrantes" contenteditable="true">
+    <section id="integrantes" contenteditable="false">
         <h2>Integrantes</h2>
-        <div><h3>Fernando Romero</h3><p>Como Directivo de *Los Empresarios*...</p></div>
-        <div><h3>William Angulo</h3><p>Representante Capitán...</p></div>
-        <div><h3>Daniel Castro</h3><p>Representante...</p></div>
-        <div><h3>Alejandro Amaya</h3><p>Defensor Capitán...</p></div>
-        <div><h3>Juan Camilo Ramírez</h3><p>Defensor...</p></div>
-        <div><h3>Mateo Díaz</h3><p>Defensor...</p></div>
+        <div><h3>Fernando Romero</h3><p><b>Rango:</b> Directivo</p></div>
+        <div><h3>William Angulo</h3><p><b>Rango:</b> Representante Capitán</p></div>
+        <div><h3>Daniel Castro</h3><p><b>Rango:</b> Representante</p></div>
+        <div><h3>Alejandro Amaya</h3><p><b>Rango:</b> Defensor Capitán</p></div>
+        <div><h3>Juan Camilo Ramírez</h3><p><b>Rango:</b> Defensor</p></div>
+        <div><h3>Mateo Díaz</h3><p><b>Rango:</b> Defensor</p></div>
     </section>
 
-    <section id="empresas" contenteditable="true">
+    <section id="empresas" contenteditable="false">
         <h2>Empresas Representadas</h2>
         <p>Representamos a 90 empresas globales...</p>
     </section>
 
-    <section id="impacto" contenteditable="true">
+    <section id="impacto" contenteditable="false">
         <h2>Impacto Global</h2>
         <p>*Los Empresarios* ha dejado una marca significativa...</p>
     </section>
 
-    <section id="colaboradores" contenteditable="true">
+    <section id="colaboradores" contenteditable="false">
         <h2>Colaboradores Internacionales</h2>
         <ul>
             <li><b>Apple:</b> Innovación tecnológica.</li>
@@ -127,13 +123,13 @@
         </ul>
     </section>
 
-    <section id="faq" contenteditable="true">
+    <section id="faq" contenteditable="false">
         <h2>Preguntas Frecuentes</h2>
         <h3>¿Qué es *Los Empresarios*?</h3>
         <p>Somos un grupo de seis líderes que representan...</p>
     </section>
 
-    <section id="contacto">
+    <section id="contacto" contenteditable="false">
         <h2>Contacto</h2>
         <form action="#" method="post">
             <label for="name">Nombre:</label><br>
@@ -146,9 +142,11 @@
         </form>
     </section>
 
-    <div id="admin-controls" style="display: none;">
-        <h3>Controles de Administrador</h3>
-        <!-- Aquí puedes agregar controles si quieres más funciones -->
+    <div id="admin-controls" class="edit-controls">
+        <button onclick="enableEditing()">Habilitar Edición</button>
+        <button onclick="disableEditing()">Deshabilitar Edición</button>
+        <button onclick="saveChanges()">Guardar Cambios</button>
+        <button onclick="resetChanges()">Restablecer Cambios</button>
     </div>
 
     <footer>
@@ -156,29 +154,33 @@
     </footer>
 
     <script>
-        // Contador de visitas
-        let visitCount = localStorage.getItem('visitCount');
-        if (visitCount === null) visitCount = 0;
-        visitCount++;
-        localStorage.setItem('visitCount', visitCount);
-        document.getElementById('counter').innerText = visitCount;
-
-        // Contraseña de administrador
         const adminPassword = "miSuperSecretaContraseña";
 
-        function promptPassword() {
-            const userPassword = prompt("Por favor, introduce la contraseña de administrador:");
-            if (userPassword === adminPassword) {
-                alert("Acceso concedido.");
-                document.getElementById('admin-controls').style.display = 'block';
-                document.getElementById('login-form').style.display = 'none';
-                document.getElementById('edit-buttons').style.display = 'block';
+        function promptLogin() {
+            const password = prompt("Introduce la contraseña de administrador:");
+            if (password === adminPassword) {
+                alert("Acceso concedido. Ahora puedes editar.");
+                document.getElementById("login-button").style.display = "none";
+                document.querySelector(".edit-controls").style.display = "block";
             } else {
-                alert("Contraseña incorrecta.");
+                alert("Contraseña incorrecta. Acceso denegado.");
             }
         }
 
-        // Guardar cambios de elementos editables
+        function enableEditing() {
+            document.querySelectorAll('section').forEach(section => {
+                section.contentEditable = "true";
+            });
+            alert("Modo edición habilitado.");
+        }
+
+        function disableEditing() {
+            document.querySelectorAll('section').forEach(section => {
+                section.contentEditable = "false";
+            });
+            alert("Modo edición deshabilitado.");
+        }
+
         function saveChanges() {
             const editables = document.querySelectorAll('[contenteditable]');
             editables.forEach((el, index) => {
@@ -187,7 +189,13 @@
             alert("Cambios guardados.");
         }
 
-        // Cargar cambios al iniciar
+        function resetChanges() {
+            if (confirm("¿Estás seguro de que deseas restablecer todos los cambios?")) {
+                localStorage.clear();
+                location.reload();
+            }
+        }
+
         function loadChanges() {
             const editables = document.querySelectorAll('[contenteditable]');
             editables.forEach((el, index) => {
@@ -196,13 +204,12 @@
             });
         }
 
-        // Restablecer cambios
-        function resetChanges() {
-            if (confirm("¿Estás seguro de que deseas restablecer todos los cambios?")) {
-                localStorage.clear();
-                location.reload();
-            }
-        }
+        // Contador de visitas
+        let visitCount = localStorage.getItem('visitCount');
+        if (visitCount === null) visitCount = 0;
+        visitCount++;
+        localStorage.setItem('visitCount', visitCount);
+        document.getElementById('counter').innerText = visitCount;
 
         window.onload = loadChanges;
     </script>
