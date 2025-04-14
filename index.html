@@ -9,17 +9,38 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #eef2f3;
+            background-color: #f4f4f4; /* Fondo gris claro */
+            color: #333333; /* Texto gris oscuro para buena legibilidad */
         }
         header {
-            background-color: #003366;
+            background-color: #4a90e2; /* Azul suave */
             color: white;
             text-align: center;
             padding: 20px;
         }
+        header h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+        header p {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+        #login-button {
+            background-color: #46b3e6; /* Azul claro */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #login-button:hover {
+            background-color: #357ab7; /* Azul más intenso al hacer hover */
+        }
         nav {
-            background-color: #00509E;
-            padding: 10px;
+            background-color: #62b8b7; /* Verde suave */
+            padding: 15px;
             text-align: center;
         }
         nav a {
@@ -35,7 +56,7 @@
             margin: 20px;
             padding: 10px;
             background-color: #ffffff;
-            color: #003366;
+            color: #333333;
             text-align: center;
             border-radius: 5px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -47,16 +68,62 @@
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+        footer {
+            background-color: #4a90e2;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
         .edit-controls {
             text-align: center;
             margin-bottom: 20px;
             display: none;
         }
-        footer {
-            background-color: #003366;
+
+        /* Mejora del diseño de la sección de contacto */
+        #contacto form {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        #contacto input, #contacto textarea {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #contacto textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        #contacto button {
+            background-color: #62b8b7;
             color: white;
-            text-align: center;
-            padding: 15px 0;
+            padding: 12px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        #contacto button:hover {
+            background-color: #4a9c94;
+        }
+
+        /* Estilos para la sección FAQ */
+        #faq h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        #faq p {
+            font-size: 16px;
+            line-height: 1.6;
         }
     </style>
 </head>
@@ -126,18 +193,31 @@
     <section id="faq" contenteditable="false">
         <h2>Preguntas Frecuentes</h2>
         <h3>¿Qué es *Los Empresarios*?</h3>
-        <p>Somos un grupo de seis líderes que representan...</p>
+        <p>Somos un grupo de seis líderes que representan a empresas globales en diversas industrias. Nuestro objetivo es promover la innovación, la sostenibilidad y el liderazgo en el ámbito empresarial.</p>
+
+        <h3>¿Cómo puedo unirme a *Los Empresarios*?</h3>
+        <p>Para formar parte de *Los Empresarios*, se requiere un riguroso proceso de selección, que incluye la evaluación de habilidades excepcionales en liderazgo y conocimiento en sectores clave. Las solicitudes se abren periódicamente.</p>
+
+        <h3>¿A qué tipo de empresas representan?</h3>
+        <p>Representamos a empresas de sectores como tecnología, salud, finanzas, desarrollo sostenible, entre otros. Las empresas que buscan innovar y tener un impacto global son parte de nuestra red.</p>
+
+        <h3>¿Cómo puedo contactar con *Los Empresarios* para colaboraciones?</h3>
+        <p>Para colaboraciones o consultas generales, puedes contactarnos a través del formulario de contacto en nuestro sitio web o enviando un correo electrónico a nuestro equipo.</p>
     </section>
 
     <section id="contacto" contenteditable="false">
         <h2>Contacto</h2>
+        <p>Si deseas obtener más información o tienes alguna consulta, por favor, completa el formulario a continuación y nos pondremos en contacto contigo a la brevedad.</p>
         <form action="#" method="post">
-            <label for="name">Nombre:</label><br>
-            <input type="text" id="name" name="name" required><br><br>
-            <label for="email">Correo Electrónico:</label><br>
-            <input type="email" id="email" name="email" required><br><br>
-            <label for="message">Mensaje:</label><br>
-            <textarea id="message" name="message" rows="5" required></textarea><br><br>
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Mensaje:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
             <button type="submit">Enviar</button>
         </form>
     </section>
