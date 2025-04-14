@@ -9,38 +9,17 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            background-color: #eef2f3;
         }
         header {
-            background-color: #4a90e2;
+            background-color: #003366;
             color: white;
             text-align: center;
             padding: 20px;
         }
-        header h1 {
-            font-size: 36px;
-            margin: 0;
-        }
-        header p {
-            font-size: 18px;
-            margin: 5px 0;
-        }
-        #login-button {
-            background-color: #46b3e6;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        #login-button:hover {
-            background-color: #357ab7;
-        }
         nav {
-            background-color: #62b8b7;
-            padding: 15px;
+            background-color: #00509E;
+            padding: 10px;
             text-align: center;
         }
         nav a {
@@ -56,7 +35,7 @@
             margin: 20px;
             padding: 10px;
             background-color: #ffffff;
-            color: #333333;
+            color: #003366;
             text-align: center;
             border-radius: 5px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -68,28 +47,41 @@
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+        .edit-controls {
+            text-align: center;
+            margin-bottom: 20px;
+            display: none;
+        }
         footer {
-            background-color: #4a90e2;
+            background-color: #003366;
             color: white;
             text-align: center;
             padding: 15px 0;
         }
-
-        /* Estilos para agregar imagen */
-        .image-controls {
-            margin-top: 10px;
-            display: none;
+        #contact-form div {
+            margin-bottom: 15px;
         }
-        .image-controls input {
-            width: 50%;
-            margin: 5px 0;
+        #contact-form input, #contact-form textarea {
+            width: 100%;
             padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
         }
-        #image-preview {
+        #contact-form button {
+            background-color: #003366;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #contact-form button:hover {
+            background-color: #00509E;
+        }
+        #form-status {
             margin-top: 20px;
-            max-width: 100%;
-            max-height: 300px;
-            display: none;
+            color: green;
         }
     </style>
 </head>
@@ -99,10 +91,6 @@
         <p id="subtitulo-header">Liderazgo, innovación y excelencia empresarial</p>
         <div>
             <button id="login-button" onclick="promptLogin()">Iniciar Sesión</button>
-        </div>
-        <!-- Botón para agregar imagen, visible solo después de iniciar sesión -->
-        <div id="image-upload-container" style="display: none;">
-            <button onclick="addImage()">Agregar Imagen</button>
         </div>
     </header>
 
@@ -122,73 +110,113 @@
         <a href="#contacto">Contacto</a>
     </nav>
 
-    <section id="inicio" contenteditable="true">
+    <section id="inicio" contenteditable="false">
         <h2>Inicio</h2>
-        <p id="texto-inicio">Bienvenidos al sitio web oficial de *Los Empresarios*. Este grupo está compuesto por seis líderes visionarios que se han reunido para crear un impacto global en la innovación, el liderazgo empresarial y la sostenibilidad...</p>
-        <div class="image-controls" id="image-controls-inicio">
-            <label for="img-width-inicio">Ancho:</label>
-            <input type="number" id="img-width-inicio" placeholder="Ancho en px">
-            <label for="img-height-inicio">Alto:</label>
-            <input type="number" id="img-height-inicio" placeholder="Alto en px">
-            <button onclick="applyImageSize('inicio')">Aplicar Tamaño</button>
-        </div>
-        <div id="image-preview-inicio"></div>
+        <p id="texto-inicio">
+            Bienvenidos al sitio web oficial de <strong>Los Empresarios</strong>. Este grupo está compuesto por seis líderes visionarios que se han unido con un solo propósito: transformar el mundo empresarial con estrategias innovadoras, liderazgo responsable y un enfoque en la excelencia. 
+            <br><br>
+            Nuestro compromiso es impulsar el crecimiento económico a nivel global, estableciendo alianzas estratégicas y colaboraciones que generen un impacto positivo en la sociedad y en las empresas que representamos. 
+            <br><br>
+            A lo largo de nuestra historia, hemos sido testigos de cómo las decisiones valientes y la cooperación entre los líderes empresariales pueden cambiar el curso de la economía mundial. 
+            <br><br>
+            Te invitamos a conocer más sobre nuestra visión, nuestros logros y las empresas que confiaron en nosotros para llevar sus proyectos al siguiente nivel.
+        </p>
     </section>
 
-    <section id="historia" contenteditable="true">
+    <section id="historia" contenteditable="false">
         <h2>Nuestra Historia</h2>
-        <p>*Los Empresarios* fue fundado el <b>11 de abril de 2025</b>...</p>
+        <p>
+            *Los Empresarios* fue fundado el <b>11 de abril de 2025</b> por un grupo de individuos con un sueño común: crear un grupo empresarial que no solo busque la rentabilidad, sino que también se enfoque en el bienestar de la sociedad. Desde sus inicios, nuestro objetivo ha sido consolidar una red de empresas que promuevan la innovación, la sostenibilidad y el liderazgo responsable. 
+            <br><br>
+            En el transcurso de los primeros años, logramos asociarnos con empresas globales que comparten nuestra visión y valores, y establecimos importantes lazos con organizaciones internacionales. Cada miembro de *Los Empresarios* aporta su experiencia y habilidades en áreas clave como la gestión, la estrategia empresarial, la innovación tecnológica y la responsabilidad social. 
+            <br><br>
+            Hoy en día, nuestra influencia se extiende por todo el mundo, y estamos en una posición privilegiada para generar cambios significativos en los sectores que representamos. A través de nuestra historia, hemos demostrado que un enfoque colaborativo y responsable puede cambiar el mundo para mejor.
+        </p>
     </section>
 
-    <section id="integrantes" contenteditable="true">
+    <section id="integrantes" contenteditable="false">
         <h2>Integrantes</h2>
-        <div><h3>Fernando Romero</h3><p><b>Rango:</b> Directivo</p></div>
-        <div><h3>William Angulo</h3><p><b>Rango:</b> Representante Capitán</p></div>
-        <div><h3>Daniel Castro</h3><p><b>Rango:</b> Representante</p></div>
-        <div><h3>Alejandro Amaya</h3><p><b>Rango:</b> Defensor Capitán</p></div>
-        <div><h3>Juan Camilo Ramírez</h3><p><b>Rango:</b> Defensor</p></div>
-        <div><h3>Mateo Díaz</h3><p><b>Rango:</b> Defensor</p></div>
+        <div><h3>Fernando Romero</h3><p><b>Rango:</b> Directivo. Con una vasta experiencia en la industria financiera, Fernando ha liderado varios proyectos de expansión internacional y es conocido por su visión estratégica.</p></div>
+        <div><h3>William Angulo</h3><p><b>Rango:</b> Representante Capitán. William es un experto en desarrollo de negocios y relaciones internacionales. Ha jugado un papel clave en la formación de alianzas estratégicas con empresas globales.</p></div>
+        <div><h3>Daniel Castro</h3><p><b>Rango:</b> Representante. Daniel es un apasionado del emprendimiento y la innovación. Ha liderado múltiples iniciativas para promover la sostenibilidad dentro de las empresas que representa.</p></div>
+        <div><h3>Alejandro Amaya</h3><p><b>Rango:</b> Defensor Capitán. Alejandro ha sido fundamental en la creación de políticas internas orientadas a la responsabilidad social y la ética empresarial.</p></div>
+        <div><h3>Juan Camilo Ramírez</h3><p><b>Rango:</b> Defensor. Con una sólida formación en derechos humanos y políticas públicas, Juan Camilo trabaja en estrecha colaboración con organizaciones gubernamentales y no gubernamentales.</p></div>
+        <div><h3>Mateo Díaz</h3><p><b>Rango:</b> Defensor. Mateo es un experto en desarrollo de talento y cultura organizacional, contribuyendo a la creación de un entorno de trabajo inclusivo y diverso.</p></div>
     </section>
 
     <section id="empresas" contenteditable="false">
         <h2>Empresas Representadas</h2>
-        <p>Representamos a más de 90 empresas globales...</p>
+        <p>
+            Representamos a más de 90 empresas globales que operan en diversas industrias, desde la tecnología hasta la energía renovable. Estas empresas han confiado en nosotros para gestionar sus relaciones empresariales, desarrollar nuevas oportunidades de mercado y contribuir al desarrollo social y económico.
+            <br><br>
+            Entre las empresas que representamos, se incluyen grandes nombres como <strong>Apple</strong>, <strong>Microsoft</strong>, <strong>Tesla</strong>, <strong>Amazon</strong>, <strong>Google</strong>, entre otras. Cada una de estas empresas comparte nuestro enfoque en la innovación, la sostenibilidad y la responsabilidad social.
+            <br><br>
+            Nuestro trabajo con estas empresas ha permitido crear soluciones que no solo benefician a los sectores empresariales, sino también a la comunidad en general, apoyando la creación de empleos, el desarrollo de nuevas tecnologías y la implementación de políticas sostenibles.
+        </p>
     </section>
 
     <section id="impacto" contenteditable="false">
         <h2>Impacto Global</h2>
-        <p>*Los Empresarios* ha dejado una marca significativa en diversas industrias...</p>
+        <p>
+            Desde nuestra fundación, *Los Empresarios* ha dejado una huella significativa en la economía global. Hemos promovido iniciativas que abarcan desde la transformación digital de empresas hasta el impulso de proyectos sociales que benefician a miles de personas en todo el mundo.
+            <br><br>
+            Nuestra visión ha llevado a la creación de nuevas oportunidades de empleo, el desarrollo de comunidades locales y la creación de soluciones tecnológicas que están cambiando industrias enteras. Además, hemos fomentado el compromiso con la sostenibilidad, ayudando a las empresas que representamos a reducir su huella de carbono y adoptar prácticas responsables con el medio ambiente.
+            <br><br>
+            *Los Empresarios* sigue siendo un referente de liderazgo y cooperación internacional, mostrando cómo un enfoque colaborativo puede llevar a la innovación y al progreso global.
+        </p>
     </section>
 
     <section id="colaboradores" contenteditable="false">
         <h2>Colaboradores Internacionales</h2>
         <ul>
-            <li><b>Apple:</b> Innovación tecnológica.</li>
-            <li><b>Microsoft:</b> Transformación digital.</li>
+            <li><b>Apple:</b> Innovación tecnológica y desarrollo de soluciones para el futuro digital.</li>
+            <li><b>Microsoft:</b> Transformación digital y colaboración en proyectos educativos y tecnológicos.</li>
+            <li><b>Tesla:</b> Liderazgo en la transición energética hacia fuentes de energía renovables.</li>
+            <li><b>Amazon:</b> Expansión en el comercio global y apoyo a pequeñas y medianas empresas.</li>
+            <li><b>Google:</b> Desarrollo de soluciones de inteligencia artificial y sostenibilidad tecnológica.</li>
         </ul>
     </section>
 
     <section id="faq" contenteditable="false">
         <h2>Preguntas Frecuentes</h2>
         <h3>¿Qué es *Los Empresarios*?</h3>
-        <p>Somos un grupo de seis líderes que representan una amplia gama de industrias...</p>
+        <p>Somos un grupo de seis líderes que representan empresas globales, con el objetivo de transformar la industria mediante la innovación, la sostenibilidad y el liderazgo empresarial.</p>
+        <h3>¿Cómo puedo contactar con *Los Empresarios*?</h3>
+        <p>Puedes hacerlo a través de nuestro formulario de contacto en la sección correspondiente. Estaremos encantados de atenderte.</p>
+        <h3>¿Qué empresas representan a *Los Empresarios*?</h3>
+        <p>Representamos a más de 90 empresas de distintos sectores, incluyendo tecnología, energía renovable, comercio, y más.</p>
+        <h3>¿Puedo colaborar con *Los Empresarios*?</h3>
+        <p>¡Sí! Estamos siempre en busca de nuevas oportunidades de colaboración con empresas y organizaciones que compartan nuestros valores.</p>
     </section>
 
     <section id="contacto" contenteditable="false">
         <h2>Contacto</h2>
-        <form action="#" method="post">
-            <label for="name">Nombre:</label><br>
-            <input type="text" id="name" name="name" required><br><br>
-            <label for="email">Correo Electrónico:</label><br>
-            <input type="email" id="email" name="email" required><br><br>
-            <label for="message">Mensaje:</label><br>
-            <textarea id="message" name="message" rows="5" required></textarea><br><br>
-            <button type="submit">Enviar</button>
+        <form id="contact-form" onsubmit="return validateForm()">
+            <div>
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div>
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="subject">Asunto:</label>
+                <input type="text" id="subject" name="subject" required>
+            </div>
+            <div>
+                <label for="message">Mensaje:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <div>
+                <button type="submit">Enviar</button>
+            </div>
         </form>
+        <div id="form-status"></div>
     </section>
 
     <footer>
-        <p>&copy; 2025 Los Empresarios</p>
+        <p>&copy; 2025 Los Empresarios. Todos los derechos reservados.</p>
     </footer>
 
     <script>
@@ -197,42 +225,79 @@
             if (password === "miSuperSecretaContraseña") {
                 alert("Acceso concedido. Ahora puedes editar.");
                 document.getElementById("login-button").style.display = "none";
-                document.getElementById("image-upload-container").style.display = "block"; // Mostrar botón de agregar imagen
+                document.querySelector(".edit-controls").style.display = "block";
             } else {
                 alert("Contraseña incorrecta. Acceso denegado.");
             }
         }
 
-        // Función para agregar la imagen debajo del título
-        function addImage() {
-            let fileInput = document.createElement('input');
-            fileInput.type = 'file';
-            fileInput.accept = 'image/*';
-            fileInput.onchange = function(event) {
-                let file = event.target.files[0];
-                if (file) {
-                    let reader = new FileReader();
-                    reader.onload = function(e) {
-                        let imageContainer = document.getElementById('image-preview-inicio');
-                        imageContainer.innerHTML = `<img src="${e.target.result}" id="img-inicio" style="max-width: 100%; max-height: 300px;">`;
-                        document.getElementById('image-controls-inicio').style.display = 'block'; // Mostrar controles de tamaño
-                    };
-                    reader.readAsDataURL(file);
-                }
-            };
-            fileInput.click();
+        function enableEditing() {
+            document.querySelectorAll('section').forEach(section => {
+                section.contentEditable = "true";
+            });
+            alert("Modo edición habilitado.");
         }
 
-        // Función para aplicar el tamaño a la imagen
-        function applyImageSize(sectionId) {
-            let img = document.getElementById(`img-${sectionId}`);
-            let width = document.getElementById(`img-width-${sectionId}`).value;
-            let height = document.getElementById(`img-height-${sectionId}`).value;
+        function disableEditing() {
+            document.querySelectorAll('section').forEach(section => {
+                section.contentEditable = "false";
+            });
+            alert("Modo edición deshabilitado.");
+        }
 
-            if (width && height) {
-                img.style.width = `${width}px`;
-                img.style.height = `${height}px`;
+        function saveChanges() {
+            const editables = document.querySelectorAll('[contenteditable]');
+            editables.forEach((el, index) => {
+                localStorage.setItem('editable-' + index, el.innerHTML);
+            });
+            alert("Cambios guardados.");
+        }
+
+        function resetChanges() {
+            if (confirm("¿Estás seguro de que deseas restablecer todos los cambios?")) {
+                localStorage.clear();
+                location.reload();
             }
+        }
+
+        function loadChanges() {
+            const editables = document.querySelectorAll('[contenteditable]');
+            editables.forEach((el, index) => {
+                const saved = localStorage.getItem('editable-' + index);
+                if (saved) el.innerHTML = saved;
+            });
+        }
+
+        function validateForm() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            if (!name || !email || !subject || !message) {
+                alert("Todos los campos son obligatorios.");
+                return false;
+            }
+
+            if (!validateEmail(email)) {
+                alert("Por favor, ingresa un correo electrónico válido.");
+                return false;
+            }
+
+            sendForm(name, email, subject, message);
+            return false;
+        }
+
+        // Validación de correo electrónico
+        function validateEmail(email) {
+            const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            return re.test(email);
+        }
+
+        // Función para simular el envío del formulario
+        function sendForm(name, email, subject, message) {
+            document.getElementById('form-status').innerText = "¡Gracias por tu mensaje, " + name + "! Te responderemos lo antes posible.";
+            document.getElementById('contact-form').reset();
         }
 
         // Contador de visitas
@@ -241,6 +306,8 @@
         visitCount++;
         localStorage.setItem('visitCount', visitCount);
         document.getElementById('counter').innerText = visitCount;
+
+        window.onload = loadChanges;
     </script>
 </body>
 </html>
