@@ -9,11 +9,11 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4; /* Fondo gris claro */
-            color: #333333; /* Texto gris oscuro para buena legibilidad */
+            background-color: #f4f4f4;
+            color: #333;
         }
         header {
-            background-color: #4a90e2; /* Azul suave */
+            background-color: #4a90e2;
             color: white;
             text-align: center;
             padding: 20px;
@@ -27,7 +27,7 @@
             margin: 5px 0;
         }
         #login-button {
-            background-color: #46b3e6; /* Azul claro */
+            background-color: #46b3e6;
             color: white;
             padding: 10px 20px;
             border: none;
@@ -36,10 +36,10 @@
             font-size: 16px;
         }
         #login-button:hover {
-            background-color: #357ab7; /* Azul más intenso al hacer hover */
+            background-color: #357ab7;
         }
         nav {
-            background-color: #62b8b7; /* Verde suave */
+            background-color: #62b8b7;
             padding: 15px;
             text-align: center;
         }
@@ -80,7 +80,7 @@
             display: none;
         }
 
-        /* Mejora del diseño de la sección de contacto */
+        /* Mejora de la sección de contacto */
         #contacto form {
             display: grid;
             grid-template-columns: 1fr;
@@ -116,14 +116,22 @@
             background-color: #4a9c94;
         }
 
-        /* Estilos para la sección FAQ */
-        #faq h3 {
-            font-size: 22px;
-            margin-bottom: 10px;
+        /* Estilos para la imagen cargada */
+        #image-preview {
+            margin-top: 20px;
+            max-width: 100%;
+            max-height: 300px;
+            display: none;
         }
-        #faq p {
-            font-size: 16px;
-            line-height: 1.6;
+
+        .image-controls {
+            margin-top: 10px;
+            display: none;
+        }
+        .image-controls input {
+            width: 50%;
+            margin: 5px 0;
+            padding: 10px;
         }
     </style>
 </head>
@@ -152,17 +160,35 @@
         <a href="#contacto">Contacto</a>
     </nav>
 
-    <section id="inicio" contenteditable="false">
+    <section id="inicio" contenteditable="true">
         <h2>Inicio</h2>
-        <p id="texto-inicio">Bienvenidos al sitio web oficial de *Los Empresarios*. Este grupo está compuesto por seis líderes visionarios...</p>
+        <p id="texto-inicio">Bienvenidos al sitio web oficial de *Los Empresarios*. Este grupo está compuesto por seis líderes visionarios que se han reunido para crear un impacto global en la innovación, el liderazgo empresarial y la sostenibilidad...</p>
+        <button onclick="addImage('inicio')">Agregar Imagen</button>
+        <div class="image-controls" id="image-controls-inicio">
+            <label for="img-width-inicio">Ancho:</label>
+            <input type="number" id="img-width-inicio" placeholder="Ancho en px">
+            <label for="img-height-inicio">Alto:</label>
+            <input type="number" id="img-height-inicio" placeholder="Alto en px">
+            <button onclick="applyImageSize('inicio')">Aplicar Tamaño</button>
+        </div>
+        <div id="image-preview-inicio"></div>
     </section>
 
-    <section id="historia" contenteditable="false">
+    <section id="historia" contenteditable="true">
         <h2>Nuestra Historia</h2>
         <p>*Los Empresarios* fue fundado el <b>11 de abril de 2025</b>...</p>
+        <button onclick="addImage('historia')">Agregar Imagen</button>
+        <div class="image-controls" id="image-controls-historia">
+            <label for="img-width-historia">Ancho:</label>
+            <input type="number" id="img-width-historia" placeholder="Ancho en px">
+            <label for="img-height-historia">Alto:</label>
+            <input type="number" id="img-height-historia" placeholder="Alto en px">
+            <button onclick="applyImageSize('historia')">Aplicar Tamaño</button>
+        </div>
+        <div id="image-preview-historia"></div>
     </section>
 
-    <section id="integrantes" contenteditable="false">
+    <section id="integrantes" contenteditable="true">
         <h2>Integrantes</h2>
         <div><h3>Fernando Romero</h3><p><b>Rango:</b> Directivo</p></div>
         <div><h3>William Angulo</h3><p><b>Rango:</b> Representante Capitán</p></div>
@@ -170,16 +196,25 @@
         <div><h3>Alejandro Amaya</h3><p><b>Rango:</b> Defensor Capitán</p></div>
         <div><h3>Juan Camilo Ramírez</h3><p><b>Rango:</b> Defensor</p></div>
         <div><h3>Mateo Díaz</h3><p><b>Rango:</b> Defensor</p></div>
+        <button onclick="addImage('integrantes')">Agregar Imagen</button>
+        <div class="image-controls" id="image-controls-integrantes">
+            <label for="img-width-integrantes">Ancho:</label>
+            <input type="number" id="img-width-integrantes" placeholder="Ancho en px">
+            <label for="img-height-integrantes">Alto:</label>
+            <input type="number" id="img-height-integrantes" placeholder="Alto en px">
+            <button onclick="applyImageSize('integrantes')">Aplicar Tamaño</button>
+        </div>
+        <div id="image-preview-integrantes"></div>
     </section>
 
     <section id="empresas" contenteditable="false">
         <h2>Empresas Representadas</h2>
-        <p>Representamos a 90 empresas globales...</p>
+        <p>Representamos a más de 90 empresas globales...</p>
     </section>
 
     <section id="impacto" contenteditable="false">
         <h2>Impacto Global</h2>
-        <p>*Los Empresarios* ha dejado una marca significativa...</p>
+        <p>*Los Empresarios* ha dejado una marca significativa en diversas industrias...</p>
     </section>
 
     <section id="colaboradores" contenteditable="false">
@@ -193,104 +228,55 @@
     <section id="faq" contenteditable="false">
         <h2>Preguntas Frecuentes</h2>
         <h3>¿Qué es *Los Empresarios*?</h3>
-        <p>Somos un grupo de seis líderes que representan a empresas globales en diversas industrias. Nuestro objetivo es promover la innovación, la sostenibilidad y el liderazgo en el ámbito empresarial.</p>
-
-        <h3>¿Cómo puedo unirme a *Los Empresarios*?</h3>
-        <p>Para formar parte de *Los Empresarios*, se requiere un riguroso proceso de selección, que incluye la evaluación de habilidades excepcionales en liderazgo y conocimiento en sectores clave. Las solicitudes se abren periódicamente.</p>
-
-        <h3>¿A qué tipo de empresas representan?</h3>
-        <p>Representamos a empresas de sectores como tecnología, salud, finanzas, desarrollo sostenible, entre otros. Las empresas que buscan innovar y tener un impacto global son parte de nuestra red.</p>
-
-        <h3>¿Cómo puedo contactar con *Los Empresarios* para colaboraciones?</h3>
-        <p>Para colaboraciones o consultas generales, puedes contactarnos a través del formulario de contacto en nuestro sitio web o enviando un correo electrónico a nuestro equipo.</p>
+        <p>Somos un grupo de seis líderes que representan una amplia gama de industrias...</p>
     </section>
 
     <section id="contacto" contenteditable="false">
         <h2>Contacto</h2>
-        <p>Si deseas obtener más información o tienes alguna consulta, por favor, completa el formulario a continuación y nos pondremos en contacto contigo a la brevedad.</p>
         <form action="#" method="post">
-            <label for="name">Nombre:</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="email">Correo Electrónico:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="message">Mensaje:</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-
+            <label for="name">Nombre:</label><br>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="email">Correo Electrónico:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+            <label for="message">Mensaje:</label><br>
+            <textarea id="message" name="message" rows="5" required></textarea><br><br>
             <button type="submit">Enviar</button>
         </form>
     </section>
 
-    <div id="admin-controls" class="edit-controls">
-        <button onclick="enableEditing()">Habilitar Edición</button>
-        <button onclick="disableEditing()">Deshabilitar Edición</button>
-        <button onclick="saveChanges()">Guardar Cambios</button>
-        <button onclick="resetChanges()">Restablecer Cambios</button>
-    </div>
-
     <footer>
-        <p>&copy; 2025 Los Empresarios. Todos los derechos reservados.</p>
+        <p>&copy; 2025 Los Empresarios</p>
     </footer>
 
     <script>
-        function promptLogin() {
-            const password = prompt("Introduce la contraseña de administrador:");
-            // Replace the following condition with a secure server-side validation
-            if (password === "miSuperSecretaContraseña") {
-                alert("Acceso concedido. Ahora puedes editar.");
-                document.getElementById("login-button").style.display = "none";
-                document.querySelector(".edit-controls").style.display = "block";
-            } else {
-                alert("Contraseña incorrecta. Acceso denegado.");
-            }
+        // Función para agregar la imagen
+        function addImage(section) {
+            let fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.accept = 'image/*';
+            fileInput.onchange = function(event) {
+                let file = event.target.files[0];
+                if (file) {
+                    let reader = new FileReader();
+                    reader.onload = function(e) {
+                        let imageContainer = document.getElementById(`image-preview-${section}`);
+                        imageContainer.innerHTML = `<img src="${e.target.result}" id="img-${section}" style="max-width: 100%; max-height: 300px;">`;
+                        document.getElementById(`image-controls-${section}`).style.display = 'block';
+                    };
+                    reader.readAsDataURL(file);
+                }
+            };
+            fileInput.click();
         }
 
-        function enableEditing() {
-            document.querySelectorAll('section').forEach(section => {
-                section.contentEditable = "true";
-            });
-            alert("Modo edición habilitado.");
+        // Función para aplicar el tamaño de la imagen
+        function applyImageSize(section) {
+            let img = document.getElementById(`img-${section}`);
+            let width = document.getElementById(`img-width-${section}`).value;
+            let height = document.getElementById(`img-height-${section}`).value;
+            if (width) img.style.width = width + 'px';
+            if (height) img.style.height = height + 'px';
         }
-
-        function disableEditing() {
-            document.querySelectorAll('section').forEach(section => {
-                section.contentEditable = "false";
-            });
-            alert("Modo edición deshabilitado.");
-        }
-
-        function saveChanges() {
-            const editables = document.querySelectorAll('[contenteditable]');
-            editables.forEach((el, index) => {
-                localStorage.setItem('editable-' + index, el.innerHTML);
-            });
-            alert("Cambios guardados.");
-        }
-
-        function resetChanges() {
-            if (confirm("¿Estás seguro de que deseas restablecer todos los cambios?")) {
-                localStorage.clear();
-                location.reload();
-            }
-        }
-
-        function loadChanges() {
-            const editables = document.querySelectorAll('[contenteditable]');
-            editables.forEach((el, index) => {
-                const saved = localStorage.getItem('editable-' + index);
-                if (saved) el.innerHTML = saved;
-            });
-        }
-
-        // Contador de visitas
-        let visitCount = localStorage.getItem('visitCount');
-        if (visitCount === null) visitCount = 0;
-        visitCount++;
-        localStorage.setItem('visitCount', visitCount);
-        document.getElementById('counter').innerText = visitCount;
-
-        window.onload = loadChanges;
     </script>
 </body>
 </html>
